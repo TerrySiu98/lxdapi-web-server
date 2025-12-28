@@ -47,9 +47,9 @@ detect_arch() {
 
 get_current_version() {
     if [ -f "$INSTALL_DIR/lxdapi-$ARCH" ]; then
-        CURRENT_VERSION=$("$INSTALL_DIR/lxdapi-$ARCH" --version 2>/dev/null || echo "未知")
+        CURRENT_VERSION=$(stat -c %y "$INSTALL_DIR/lxdapi-$ARCH" 2>/dev/null | cut -d' ' -f1)
     else
-        CURRENT_VERSION="未知"
+        CURRENT_VERSION="未安装"
     fi
     info "当前版本: $CURRENT_VERSION"
 }
