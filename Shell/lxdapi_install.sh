@@ -64,6 +64,12 @@ install_base_packages() {
     systemctl start nftables >/dev/null 2>&1
     ok "nftables 已启动"
     
+    if command -v lxc &>/dev/null && lxc network show lxdbr0 &>/dev/null; then
+        lxc network set lxdbr0 ipv4.nat true 2>/dev/null
+        lxc network set lxdbr0 ipv6.nat true 2>/dev/null
+        ok "LXD NAT 规则已重建"
+    fi
+    
     systemctl enable nginx >/dev/null 2>&1
     systemctl start nginx >/dev/null 2>&1
     ok "nginx 已启动"
