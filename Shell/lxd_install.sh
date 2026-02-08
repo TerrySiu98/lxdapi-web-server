@@ -196,7 +196,7 @@ setup_storage() {
                 if [[ "$SYSTEM" == "Ubuntu" ]]; then
                     install_package zfsutils-linux
                 else
-                    bash <(curl -sL https://raw.githubusercontent.com/xkatld/lxdapi-web-server/refs/heads/v2.1.0-vpsm.link/Shell/debian_zfs.sh)
+                    bash <(curl -sL https://raw.githubusercontent.com/TerrySiu98/lxdapi-web-server/refs/heads/v2.1.0-vpsm.link/Shell/debian_zfs.sh)
                 fi
             fi
             info "配置 LXD 使用系统 ZFS..."

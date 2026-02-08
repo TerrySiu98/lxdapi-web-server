@@ -56,7 +56,7 @@ get_current_version() {
 
 get_latest_version() {
     info "获取最新版本..."
-    LATEST_VERSION=$(curl -s https://api.github.com/repos/xkatld/lxdapi-web-server/releases/latest | grep '"tag_name"' | sed -n 's/.*"tag_name": *"\([^"]*\)".*/\1/p')
+    LATEST_VERSION=$(curl -s https://api.github.com/repos/TerrySiu98/lxdapi-web-server/releases/latest | grep '"tag_name"' | sed -n 's/.*"tag_name": *"\([^"]*\)".*/\1/p')
     
     if [ -z "$LATEST_VERSION" ]; then
         err "无法获取最新版本信息，请检查网络连接"
@@ -112,7 +112,7 @@ backup_files() {
 download_latest() {
     info "下载版本 $UPDATE_VERSION..."
     
-    DOWNLOAD_URL="https://github.com/xkatld/lxdapi-web-server/releases/download/${UPDATE_VERSION}/lxdapi-linux-${ARCH}.tar.gz"
+    DOWNLOAD_URL="https://github.com/TerrySiu98/lxdapi-web-server/releases/download/${UPDATE_VERSION}/lxdapi-linux-${ARCH}.tar.gz"
     info "下载地址: $DOWNLOAD_URL"
     
     TEMP_FILE=$(mktemp)
