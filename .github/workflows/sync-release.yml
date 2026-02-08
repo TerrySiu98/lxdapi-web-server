@@ -1,5 +1,6 @@
 name: Bulk Sync All Releases
-permissions: contents: write
+permissions:
+  contents: write
 
 on:
   workflow_dispatch: # 手动触发
@@ -7,12 +8,12 @@ on:
 jobs:
   sync-all:
     runs-on: ubuntu-latest
-    timeout-minutes: 60 # 防止运行时间过长卡死
+    timeout-minutes: 60
     steps:
       - name: Checkout
         uses: actions/checkout@v3
         with:
-          fetch-depth: 0 # 获取所有历史，确保 tag 识别正常
+          fetch-depth: 0
 
       - name: Install GitHub CLI
         run: |
@@ -30,8 +31,7 @@ jobs:
         run: |
           echo "=== 开始批量搬运 ==="
           
-          # 1. 获取原作者的所有 Release Tag 列表 (按时间倒序)
-          # -L 100 表示获取最近 100 个版本，不够可以改大
+          # 获取原作者的所有 Release Tag 列表 (按时间倒序)
           TAGS=$(gh release list -R $UPSTREAM_REPO -L 100 --json tagName --jq '.[].tagName')
           
           if [ -z "$TAGS" ]; then
@@ -43,16 +43,13 @@ jobs:
           echo "$TAGS"
           echo "========================"
 
-          # 2. 循环处理每一个 Tag
           for TAG in $TAGS; do
             echo ">> 正在处理版本: $TAG ..."
             
-            # 清理旧的临时文件
             rm -rf sync_assets
             mkdir -p sync_assets
 
-            # A. 下载原作者该版本的文件
-            # 如果原作者这个版本没有附件，gh 会报错，我们用 || true 跳过，继续下一个
+            # A. 下载
             if gh release download $TAG -R $UPSTREAM_REPO -D sync_assets -p "*"; then
               echo "   下载成功，准备上传..."
             else
@@ -60,11 +57,10 @@ jobs:
               continue
             fi
 
-            # B. 在你的仓库创建 Release
-            # 如果 Release 已存在(比如刚才你搬过一次)，命令会报错，加 || true 忽略报错直接去上传
+            # B. 创建 Release
             gh release create $TAG --title "$TAG" --notes "Mirrored from upstream $UPSTREAM_REPO" || echo "   Release 可能已存在，尝试直接上传文件..."
 
-            # C. 上传文件 (使用 --clobber 覆盖已存在的文件)
+            # C. 上传文件
             gh release upload $TAG sync_assets/* --clobber
             
             echo ">> 版本 $TAG 处理完成！"
