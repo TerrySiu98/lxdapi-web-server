@@ -34,7 +34,7 @@ detect_arch() {
     ok "系统架构: $ARCH"
 }
 
-IMAGES_BASE_URL="https://github.com/xkatld/lxdapi-web-server/releases/download/image"
+IMAGES_BASE_URL="https://github.com/TerrySiu98/lxdapi-web-server/releases/download/image"
 
 declare -a IMAGE_LIST=(
     "almalinux-8"

@@ -7,7 +7,7 @@ function lxdwebserver_MetaData()
     return [
         'DisplayName' => '魔方财务-LXD用户对接插件 by xkatld',
         'APIVersion'  => 'v2.0.5',
-        'HelpDoc'     => 'https://github.com/xkatld/lxdapi-web-server',
+        'HelpDoc'     => 'https://github.com/TerrySiu98/lxdapi-web-server',
     ];
 }
 

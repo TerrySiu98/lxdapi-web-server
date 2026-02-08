@@ -68,11 +68,11 @@ get_latest_version() {
     done
     
     if [[ "$download_source" == "github" ]]; then
-        LATEST_VERSION=$(curl -s https://api.github.com/repos/xkatld/lxdapi-web-server/releases/latest | grep '"tag_name"' | sed -n 's/.*"tag_name": *"\([^"]*\)".*/\1/p')
-        BASE_URL="https://github.com/xkatld/lxdapi-web-server/releases/download"
+        LATEST_VERSION=$(curl -s https://api.github.com/repos/TerrySiu98/lxdapi-web-server/releases/latest | grep '"tag_name"' | sed -n 's/.*"tag_name": *"\([^"]*\)".*/\1/p')
+        BASE_URL="https://github.com/TerrySiu98/lxdapi-web-server/releases/download"
     else
-        LATEST_VERSION=$(curl -s https://gitee.com/api/v5/repos/xkatld/lxdapi-web-server/releases/latest | grep '"tag_name"' | sed -n 's/.*"tag_name": *"\([^"]*\)".*/\1/p')
-        BASE_URL="https://gitee.com/xkatld/lxdapi-web-server/releases/download"
+        LATEST_VERSION=$(curl -s https://gitee.com/api/v5/repos/TerrySiu98/lxdapi-web-server/releases/latest | grep '"tag_name"' | sed -n 's/.*"tag_name": *"\([^"]*\)".*/\1/p')
+        BASE_URL="https://gitee.com/TerrySiu98/lxdapi-web-server/releases/download"
     fi
     
     if [ -z "$LATEST_VERSION" ]; then

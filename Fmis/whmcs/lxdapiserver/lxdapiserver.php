@@ -5,7 +5,7 @@
  * @package    WHMCS-LXD对接插件 by xkatld
  * @author     xkatld
  * @version    v2.0.3
- * @link       https://github.com/xkatld/lxdapi-web-server
+ * @link       https://github.com/TerrySiu98/lxdapi-web-server
  */
 
 if (!defined("WHMCS")) {
