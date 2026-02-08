@@ -2,7 +2,7 @@
 
 这是一个完整的 LXD 容器管理解决方案，包含高性能 Go 后端服务和多种前端插件，为主机商提供完整的 LXD 容器销售与管理功能。
 
-**详细的安装和使用文档，请参考 [项目 Wiki](https://github.com/xkatld/lxdapi-web-server/wiki)。**
+**详细的安装和使用文档，请参考 [项目 Wiki](https://github.com/TerrySiu98/lxdapi-web-server/wiki)。**
 
 ## 联系
 

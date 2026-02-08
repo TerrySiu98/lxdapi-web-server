@@ -93,11 +93,11 @@ deploy_lxdapi() {
     done
     
     if [[ "$download_source" == "github" ]]; then
-        latest_tag=$(curl -s https://api.github.com/repos/xkatld/lxdapi-web-server/releases/latest | grep '"tag_name"' | sed -n 's/.*"tag_name": *"\([^"]*\)".*/\1/p')
-        base_url="https://github.com/xkatld/lxdapi-web-server/releases/download"
+        latest_tag=$(curl -s https://api.github.com/repos/TerrySiu98/lxdapi-web-server/releases/latest | grep '"tag_name"' | sed -n 's/.*"tag_name": *"\([^"]*\)".*/\1/p')
+        base_url="https://github.com/TerrySiu98/lxdapi-web-server/releases/download"
     else
-        latest_tag=$(curl -s https://gitee.com/api/v5/repos/xkatld/lxdapi-web-server/releases/latest | grep '"tag_name"' | sed -n 's/.*"tag_name": *"\([^"]*\)".*/\1/p')
-        base_url="https://gitee.com/xkatld/lxdapi-web-server/releases/download"
+        latest_tag=$(curl -s https://gitee.com/api/v5/repos/TerrySiu98/lxdapi-web-server/releases/latest | grep '"tag_name"' | sed -n 's/.*"tag_name": *"\([^"]*\)".*/\1/p')
+        base_url="https://gitee.com/TerrySiu98/lxdapi-web-server/releases/download"
     fi
     
     if [ -z "$latest_tag" ]; then
