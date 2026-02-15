@@ -4,10 +4,6 @@
 
 **详细的安装和使用文档，请参考 [项目 Wiki](https://github.com/TerrySiu98/lxdapi-web-server/wiki)。**
 
-## 联系
-
-需要加群讨论的可以先加微信`fsynetcom`记得备注。
-
 ## 支持财务
 
 | ①魔方财务 | ②WHMCS | ③FOSSBilling | ④魔方业务V10 |
